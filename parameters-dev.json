@@ -1,0 +1,10 @@
+[
+    {
+        "ParameterKey":"S3BucketName",
+        "ParameterValue":"vaiuvuiagvui"
+    },
+    {
+        "ParameterKey":"SelectStage",
+        "ParameterValue":"dev"
+    }
+]
