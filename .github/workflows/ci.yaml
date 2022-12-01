@@ -2,8 +2,8 @@
 
 name: CI
 on:
-  push:
-    branches: [ "main" ]
+#  push:
+#    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
@@ -11,7 +11,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+    defaults:
+      run:
+        shell: bash
+        working-directory: .
+        
     permissions:
       id-token: write
       contents: read
@@ -25,12 +29,13 @@ jobs:
       - name: Configure AWS credentials from Test account
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::158993093339:role/github-oidc-role
-          aws-region: us-east-1
+          role-to-assume: ${{ secrets.AWS_ROLE }}
+          aws-region: ${{ secrets.AWS_REGION }}
+          role-session-name: GitHub-OIDC
           role-duration-seconds: 3600
           
-      - name: Run a multi-line script
-        run: sh cf-change-set.sh
+      - name: Run script
+        run: ./cf-change-set.sh
         
       - name: Get the artifacts
         uses: actions/upload-artifact@v3
