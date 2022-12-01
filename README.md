@@ -50,8 +50,7 @@ Execute on AWS cloudformation, it will create necessary resources.
 
 ### 4. Provide the name of change sets in `changeset.name`
 
-**NOTE** Added`cf-template.yaml` for reference
-Automation CI workflow is present at `.github/workflows/ci.yaml`
+**NOTE** Added`cf-template.yaml` for reference. Automation CI workflow is present at `.github/workflows/ci.yaml`
 
 
 
