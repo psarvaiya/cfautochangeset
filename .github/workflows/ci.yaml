@@ -1,0 +1,38 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      id-token: write
+      contents: read
+      
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: provide chmod permission
+        run: chmod +x cf.sh
+        
+      - name: Configure AWS credentials from Test account
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::158993093339:role/github-oidc-role
+          aws-region: us-east-1
+          role-duration-seconds: 3600
+          
+      - name: Run a multi-line script
+        run: sh cf.sh
+        
+      - uses: actions/upload-artifact@v3
+        with:
+          name: get-artifacts
+          path: artifacts-*
