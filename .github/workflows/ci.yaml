@@ -4,12 +4,16 @@ on:
 #    branches: [ "main" ]
 #  pull_request:
 #    branches: [ "main" ]
-
+  pull_request:
+    types:
+      - closed
+  
   #to trigger CI manually
   workflow_dispatch:
 
 jobs:
-  build:
+  if_merged:
+    if: github.event.pull_request.merged == true && github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -42,3 +46,5 @@ jobs:
         with:
           name: get-artifacts
           path: artifacts-*
+          
+      - run: echo 'PR is merged'
