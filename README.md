@@ -52,6 +52,9 @@ Execute on AWS cloudformation, it will create necessary resources.
 
 **NOTE** Added`cf-template.yaml` for reference. Automation CI workflow is present at `.github/workflows/ci.yaml`
 
+### 5. You can also download the artifacts of every run
+
+![image](https://user-images.githubusercontent.com/68551613/205032781-e7535590-b11c-4b43-a24f-577153638d61.png)
 
 
 
