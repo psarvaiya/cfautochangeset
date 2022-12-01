@@ -62,7 +62,6 @@ function create_change_set(){
         if [[ $? -eq 255 ]]; then
                 print_color 'red' 'PARAMETERS passed are incorrect, exiting the script'
                 quit_execution
-
         fi
 
         aws cloudformation create-change-set --stack-name sds-internal-change-sets --change-set-name $(cat changeset.name) --parameters file://parameters-dev.json --template-body file://cf-template.yaml > create_change_set.txt
