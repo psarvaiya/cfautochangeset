@@ -3,7 +3,6 @@
 function quit_execution(){
   print_color 'red' "Script Exited"
   exit
-
 }
 
 function execute_change_set(){
