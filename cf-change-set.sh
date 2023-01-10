@@ -6,7 +6,7 @@ function quit_execution(){
 }
 
 function execute_change_set(){
-        aws cloudformation execute-change-set  --change-set-name $(cat changeset.name) --stack-name sds-internal-change-sets
+        aws cloudformation execute-change-set  --change-set-name $(cat changeset.name) --stack-name $(cat stack.name)
         aws cloudformation wait stack-update-complete --stack-name $(cat stack.name)
 
 }
