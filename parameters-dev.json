@@ -1,10 +1,10 @@
 [
     {
-        "ParameterKey":"S3BucketName",
-        "ParameterValue":"vaiuvuiagvui"
+        "ParameterKey":"ApiName",
+        "ParameterValue":"myapi99"
     },
     {
-        "ParameterKey":"SelectStage",
-        "ParameterValue":"dev"
+        "ParameterKey":"S3BucketName",
+        "ParameterValue":"my-s3-bucket-new-demo"
     }
 ]

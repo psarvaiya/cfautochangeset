@@ -57,17 +57,17 @@ function loop_parameters(){
 
 
 function create_change_set(){
-        aws cloudformation create-change-set --stack-name sds-internal-change-sets --change-set-name $(cat changeset.name) --parameters file://parameters-dev.json --template-body file://cf-template.yaml
+        aws cloudformation create-change-set --stack-name sds-internal-change-sets --change-set-name $(cat changeset.name) --parameters file://parameters-dev.json --template-body file://cf-template.yaml --capabilities CAPABILITY_NAMED_IAM
 
         if [[ $? -eq 255 ]]; then
                 print_color 'red' 'PARAMETERS passed are incorrect, exiting the script'
                 quit_execution
         fi
 
-        aws cloudformation create-change-set --stack-name sds-internal-change-sets --change-set-name $(cat changeset.name) --parameters file://parameters-dev.json --template-body file://cf-template.yaml > create_change_set.txt
+        aws cloudformation create-change-set --stack-name sds-internal-change-sets --change-set-name $(cat changeset.name) --parameters file://parameters-dev.json --template-body file://cf-template.yaml --capabilities CAPABILITY_NAMED_IAM > create_change_set.txt
 
 cat > create_change_set_command.txt <<-EOF
-aws cloudformation create-change-set --stack-name sds-internal-change-sets --change-set-name $(cat changeset.name) --parameters file://parameters-dev.json --template-body file://cf-template.yaml
+aws cloudformation create-change-set --stack-name sds-internal-change-sets --change-set-name $(cat changeset.name) --parameters file://parameters-dev.json --template-body file://cf-template.yaml --capabilities CAPABILITY_NAMED_IAM
 EOF
 
 }
