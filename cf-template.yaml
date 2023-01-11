@@ -173,6 +173,7 @@ Resources:
               - "s3:PutObjectVersionAcl"
               - "s3:PutBucketPolicy"
               - "s3:AbortMultipartUpload"
+              
               Resource: !Join [ "", [!GetAtt CreateS3Bucket.Arn,'/*/*/*']]
       ManagedPolicyArns:
         - 'arn:aws:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs'
