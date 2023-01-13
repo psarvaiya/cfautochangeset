@@ -172,6 +172,7 @@ Resources:
               - "s3:PutObjectTagging"
               - "s3:PutObjectVersionAcl"
               - "s3:PutBucketPolicy"
+              - "s3:AbortMultipartUpload"
               
               Resource: !Join [ "", [!GetAtt CreateS3Bucket.Arn,'/*/*/*']]
       ManagedPolicyArns:
